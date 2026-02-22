@@ -1,0 +1,37 @@
+{
+  "cor_version": "1.0.0",
+  "level": 1,
+  "id": "invalid-bad-reasoning-atom-demo",
+  "created_utc": "2026-02-22T12:00:00Z",
+  "language": "en",
+  "generator": {
+    "actor_type": "model",
+    "name": "Test-Generator",
+    "version": "1.0"
+  },
+  "claim": {
+    "id": "c1",
+    "text": "This example has a malformed reasoning atom.",
+    "type": "factual"
+  },
+  "evidence": [
+    {
+      "id": "e1",
+      "type": "document",
+      "description": "Placeholder evidence."
+    }
+  ],
+  "reasoning_atoms": [
+    {
+      "id": "ra:001",
+      "statement": "Missing step_index and inference_type and inputs."
+    }
+  ],
+  "validation": {
+    "overall_status": "unvalidated",
+    "validators": []
+  },
+  "metadata": {
+    "_test_note": "INVALID: reasoning_atom missing required fields: step_index, inference_type, inputs."
+  }
+}

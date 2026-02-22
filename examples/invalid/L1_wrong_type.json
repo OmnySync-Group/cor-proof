@@ -1,0 +1,40 @@
+{
+  "cor_version": "1.0.0",
+  "level": "one",
+  "id": "invalid-wrong-type-demo",
+  "created_utc": "2026-02-22T12:00:00Z",
+  "language": "en",
+  "generator": {
+    "actor_type": "model",
+    "name": "Test-Generator",
+    "version": "1.0"
+  },
+  "claim": {
+    "id": "c1",
+    "text": "This example has level as a string instead of integer.",
+    "type": "factual"
+  },
+  "evidence": [
+    {
+      "id": "e1",
+      "type": "document",
+      "description": "Placeholder evidence for invalid example."
+    }
+  ],
+  "reasoning_atoms": [
+    {
+      "id": "ra:001",
+      "step_index": 1,
+      "statement": "Evidence supports claim.",
+      "inference_type": "deductive",
+      "inputs": ["e1"]
+    }
+  ],
+  "validation": {
+    "overall_status": "unvalidated",
+    "validators": []
+  },
+  "metadata": {
+    "_test_note": "INVALID: 'level' must be integer, not string. Tests type enforcement."
+  }
+}

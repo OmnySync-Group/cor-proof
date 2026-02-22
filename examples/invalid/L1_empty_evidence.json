@@ -1,0 +1,34 @@
+{
+  "cor_version": "1.0.0",
+  "level": 1,
+  "id": "invalid-empty-evidence-demo",
+  "created_utc": "2026-02-22T12:00:00Z",
+  "language": "en",
+  "generator": {
+    "actor_type": "model",
+    "name": "Test-Generator",
+    "version": "1.0"
+  },
+  "claim": {
+    "id": "c1",
+    "text": "This claim has no supporting evidence.",
+    "type": "factual"
+  },
+  "evidence": [],
+  "reasoning_atoms": [
+    {
+      "id": "ra:001",
+      "step_index": 1,
+      "statement": "No evidence to support this claim.",
+      "inference_type": "deductive",
+      "inputs": []
+    }
+  ],
+  "validation": {
+    "overall_status": "unvalidated",
+    "validators": []
+  },
+  "metadata": {
+    "_test_note": "INVALID: 'evidence' array is empty. Tests minItems enforcement (requires schema minItems: 1)."
+  }
+}

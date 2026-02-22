@@ -1,0 +1,67 @@
+{
+  "level": 1,
+  "id": "example-l1-medical-triage-basic",
+  "created_utc": "2025-12-17T20:10:00Z",
+  "language": "en",
+  "generator": {
+    "actor_type": "model",
+    "name": "Clinical-Triage-Assistant",
+    "version": "0.9",
+    "instance_id": "triage-0.9-local"
+  },
+  "claim": {
+    "id": "c1",
+    "text": "Chest pain with shortness of breath can be associated with serious conditions requiring urgent evaluation.",
+    "type": "factual",
+    "scope": "general",
+    "domain": ["healthcare", "triage"]
+  },
+  "evidence": [
+    {
+      "id": "e1",
+      "type": "guideline",
+      "description": "Brief plain-language description of what this evidence is and why it matters.",
+      "uri": "https://example.org/triage/chest-pain-guidance",
+      "snippet": "Chest pain with dyspnea is a high-risk presentation warranting urgent assessment.",
+      "retrieved_at": "2025-12-17T20:09:10Z",
+      "confidence": 0.7,
+      "metadata": {
+        "version": "2024.4"
+      }
+    }
+  ],
+  "reasoning_atoms": [
+    {
+      "id": "ra: 001",
+      "step_index": 1,
+      "statement": "Guideline excerpt supports the triage risk statement.",
+      "inference_type": "abduction",
+      "inputs": ["e1"],
+      "outputs": ["c1"],
+      "support_claims": ["cl:001"],
+      "uncertainty": { "score": 0.3, "band": "medium" },
+      "assumptions": [],
+      "notes": "Guideline excerpt supports the general triage risk statement."
+    }
+  ],
+  "validation": {
+    "overall_status": "validated",
+    "validators": [
+      {
+        "id": "ajv-cli",
+        "actor_type": "hybrid",
+        "name": "ajv-cli",
+        "version": "5.x",
+        "timestamp_utc": "2025-12-21T00:00:00Z",
+        "scope": "schema",
+        "verdict": "pass",
+        "comments": "Validated example against COR Proof schem v1.01 (draft2020).",
+        "metada": {}
+      }
+    ]
+  },
+  "metadata": {
+    "tags": ["example", "l1", "medical", "triage"],
+    "notes": "L1 example: basic factual claim + single supporting evidence + minimal reasoning atom."
+  }
+}

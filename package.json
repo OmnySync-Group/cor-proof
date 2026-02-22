@@ -1,0 +1,23 @@
+{
+  "name": "cor-proof",
+  "version": "1.0.0",
+  "description": "COR Proof (Chain-of-Reasoning Proof) — Open standard for structured, verifiable reasoning artifacts",
+  "author": "OmnySync Group LLC <founder@omnysyncai.com>",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omnysyncgroup/cor-proof"
+  },
+  "type": "commonjs",
+  "scripts": {
+    "validate": "node validator/validate.js",
+    "test": "node validator/validate.js examples/valid/L1_basic_claim.json && echo 'All validations passed'"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^2.1.1"
+  },
+  "dependencies": {
+    "openai": "^6.15.0"
+  }
+}

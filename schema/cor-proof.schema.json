@@ -1,0 +1,285 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stake-the-truth.org/cor/schema/v1.0.0",
+  "title": "COR Proof",
+  "type": "object",
+  "required": [
+    "cor_version",
+    "level",
+    "id",
+    "created_utc",
+    "language",
+    "generator",
+    "claim",
+    "evidence",
+    "reasoning_atoms",
+    "validation",
+    "metadata"
+  ],
+  "properties": {
+    "cor_version": { "type": "string" },
+    "level": { "type": "integer", "minimum": 1, "maximum": 3 },
+    "id": { "type": "string" },
+    "created_utc": { "type": "string", "format": "date-time" },
+    "language": { "type": "string" },
+
+    "generator": {
+      "type": "object",
+      "required": ["actor_type", "name", "version"],
+      "properties": {
+        "actor_type": {
+          "type": "string",
+          "enum": ["model", "human", "hybrid"]
+        },
+        "name": { "type": "string" },
+        "version": { "type": "string" },
+        "instance_id": { "type": "string" }
+      }
+    },
+
+    "claim": {
+      "type": "object",
+      "required": ["id", "text", "type"],
+      "properties": {
+        "id": { "type": "string" },
+        "text": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": [
+            "factual",
+            "predictive",
+            "normative",
+            "counterfactual",
+            "other"
+          ]
+        },
+        "scope": { "type": "string" },
+        "domain": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "intent": { "type": "string" }
+      }
+    },
+
+    "context": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "text"],
+        "properties": {
+          "id": { "type": "string" },
+          "text": { "type": "string" },
+          "source": { "type": "string" }
+        }
+      }
+    },
+
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "description"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "type": "string" },
+          "description": { "type": "string" },
+          "source_ref": { "type": "string" },
+          "citation": { "type": "string" },
+          "hash": { "type": ["string", "null"] },
+          "uncertainty": {
+            "type": "object",
+            "properties": {
+              "score": { "type": "number", "minimum": 0, "maximum": 1 },
+              "band": {
+                "type": "string",
+                "enum": ["low", "medium", "high"]
+              }
+            }
+          },
+          "metadata": { "type": "object" }
+        }
+      }
+    },
+
+    "reasoning_atoms": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "step_index",
+          "statement",
+          "inference_type",
+          "inputs"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "step_index": { "type": "integer", "minimum": 1 },
+          "statement": { "type": "string" },
+          "inference_type": { "type": "string" },
+          "inference_subtype": { "type": ["string", "null"] },
+          "inputs": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "outputs": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "supports_claims": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "uncertainty": {
+            "type": "object",
+            "properties": {
+              "score": { "type": "number", "minimum": 0, "maximum": 1 },
+              "band": {
+                "type": "string",
+                "enum": ["low", "medium", "high"]
+              }
+            }
+          },
+          "assumptions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "text"],
+              "properties": {
+                "id": { "type": "string" },
+                "text": { "type": "string" },
+                "uncertainty": {
+                  "type": "object",
+                  "properties": {
+                    "score": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "band": {
+                      "type": "string",
+                      "enum": ["low", "medium", "high"]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "notes": { "type": "string" },
+          "metadata": { "type": "object" }
+        }
+      }
+    },
+
+    "contradictions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "description", "type", "status"],
+        "properties": {
+          "id": { "type": "string" },
+          "description": { "type": "string" },
+          "evidence_ids": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "reasoning_atom_ids": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "data_conflict",
+              "logic_conflict",
+              "norm_conflict",
+              "other"
+            ]
+          },
+          "proposed_resolution": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["unresolved", "partially_resolved", "resolved"]
+          },
+          "metadata": { "type": "object" }
+        }
+      }
+    },
+
+    "validation": {
+      "type": "object",
+      "required": ["overall_status", "validators"],
+      "properties": {
+        "overall_status": {
+          "type": "string",
+          "enum": [
+            "unvalidated",
+            "partially_validated",
+            "validated",
+            "rejected"
+          ]
+        },
+        "validators": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "actor_type", "verdict"],
+            "properties": {
+              "id": { "type": "string" },
+              "actor_type": {
+                "type": "string",
+                "enum": ["model", "human", "hybrid"]
+              },
+              "name": { "type": "string" },
+              "version": { "type": "string" },
+              "timestamp_utc": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "scope": { "type": "string" },
+              "verdict": {
+                "type": "string",
+                "enum": ["pass", "fail", "mixed", "inconclusive"]
+              },
+              "comments": { "type": "string" },
+              "metadata": { "type": "object" }
+            }
+          }
+        }
+      }
+    },
+
+    "ledger": {
+      "type": "object",
+      "properties": {
+        "hash_algorithm": { "type": "string" },
+        "document_hash": { "type": ["string", "null"] },
+        "anchors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "network": { "type": "string" },
+              "anchor_type": {
+                "type": "string",
+                "enum": ["onchain", "offchain", "local_ledger"]
+              },
+              "txid": { "type": "string" },
+              "block_height": { "type": "integer" },
+              "timestamp_utc": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "metadata": { "type": "object" }
+            }
+          }
+        }
+      }
+    },
+
+    "metadata": { "type": "object" }
+  }
+}

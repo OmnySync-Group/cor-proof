@@ -1,0 +1,91 @@
+{
+  "cor_version": "1.0.0",
+  "level": 1,
+  "id": "12345",
+  "created_utc": "2023-10-03T12:00:00Z",
+  "language": "en",
+  "generator": {
+    "actor_type": "model",
+    "name": "GPT-4",
+    "version": "4.0",
+    "instance_id": "abc123"
+  },
+  "claim": {
+    "id": "claim1",
+    "text": "Ibuprofen is an NSAID.",
+    "type": "factual",
+    "scope": "Ibuprofen classification",
+    "domain": [
+      "pharmacology"
+    ],
+    "intent": "to inform about the classification of ibuprofen"
+  },
+  "context": [
+    {
+      "id": "context1",
+      "text": "Ibuprofen is a common medication used for pain relief, reducing inflammation, and lowering fever.",
+      "source": "general knowledge"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "evidence1",
+      "type": "document",
+      "description": "Ibuprofen is classified as a nonsteroidal anti-inflammatory drug (NSAID) according to its drug label.",
+      "source_ref": "https://www.drugs.com",
+      "citation": "Drugs.com. Ibuprofen Monograph. Available at: https://www.drugs.com/ibuprofen.html",
+      "hash": null,
+      "uncertainty": {
+        "score": 0,
+        "band": "low"
+      },
+      "metadata": {}
+    }
+  ],
+  "reasoning_atoms": [
+    {
+      "id": "atom1",
+      "step_index": 1,
+      "statement": "Ibuprofen is classified as an NSAID by reputable sources such as drug databases.",
+      "inference_type": "deductive",
+      "inference_subtype": null,
+      "inputs": [
+        "context1",
+        "evidence1"
+      ],
+      "outputs": [
+        "claim1"
+      ],
+      "supports_claims": [
+        "claim1"
+      ],
+      "uncertainty": {
+        "score": 0,
+        "band": "low"
+      },
+      "assumptions": [
+        {
+          "id": "assumption1",
+          "text": "Drug databases like Drugs.com provide accurate classifications.",
+          "uncertainty": {
+            "score": 0,
+            "band": "low"
+          }
+        }
+      ],
+      "notes": "",
+      "metadata": {}
+    }
+  ],
+  "contradictions": [],
+  "validation": {
+    "overall_status": "unvalidated",
+    "validators": []
+  },
+  "ledger": {
+    "hash_algorithm": "",
+    "document_hash": null,
+    "anchors": []
+  },
+  "metadata": {}
+}
