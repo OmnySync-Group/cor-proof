@@ -1,4 +1,4 @@
-# COR Proof (Chain-of-Reasoning Proof) — Open Standard
+# COR Proof (Chain-of-Reasoning Proof) — Open Specification
 
 ---
 
@@ -8,7 +8,7 @@
 
 ## What is COR Proof?
 
-COR Proof is an open, structured standard for capturing, validating, and auditing reasoning processes in AI and human–AI systems.
+COR Proof is an open, structured specification for capturing, validating, and auditing reasoning processes in AI and human–AI systems.
 
 It defines a machine-verifiable and human-readable format for representing claims, evidence, and reasoning structure, supporting schema-based validation and cross-system verification across multiple domains.
 
