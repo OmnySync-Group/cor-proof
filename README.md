@@ -211,6 +211,21 @@ See [SECURITY.md](SECURITY.md) for the security policy.
 
 ---
 
+## WHY THIS PROJECT EXISTS:
+My academic and professional endeavors have mandated that I "explain the why" — in front of architecture critique boards, confirmation briefs to my leadership, my Master's thesis, and truly most of the time in everyday life. To that end, when I started using AI more heavily in 2025 and began to see the growing chorus of "how can we trust AI" and “AI hallucinates or drifts" — I became convinced there has to be a mechanism to help minimize these concerns. That is when I began to investigate what Chain-of-Thought (CoT) was so I could find out why it was not providing confidence in AI answers and workflows. It turns out that CoT just shows "how" the AI came to its conclusion, not "why."
+
+This is when I set out in early 2025 to find the "why" behind AI responses and workflows. Enter the Chain-of-Reasoning (COR) Proof, which requires AI to "explain itself" through structured 'reasoning atoms' — inspectable steps bound to declared evidence, captured at inference time, not asserted after the fact.
+
+Now, don't get me wrong — the irony of using AI to help explain itself is not lost on me. But I believe that over a year of disciplined iteration to produce a valid and functional COR Proof reasoning artifact is exactly the discipline this problem demands. The repo speaks for itself — but I firmly believe in the value of community improvement and support. I am employed full-time with an active family life — and I commit every spare moment during the week and weekends to improve the outcomes of COR Proof.
+
+On that note, let's dive right into it and if you'd like to know a little more about me, I have posted my info in the CONTRIBUTING.md file of this repo.
+
+Thanks,
+
+Vince
+
+---
+
 ## Attribution
 
 COR Proof is developed and maintained by **OmnySync Group LLC** as part of the **Stake The Truth** initiative.
