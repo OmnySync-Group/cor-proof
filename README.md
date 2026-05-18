@@ -232,4 +232,6 @@ COR Proof is developed and maintained by **OmnySync Group LLC** as part of the *
 
 Contact: founder@omnysyncai.com
 
+**Stay Informed:** Follow ongoing COR Proof development, research, reasoning artifacts, and governance updates at [Stake The Truth](https://stakethetruth.substack.com/)
+
 *Reasoning you can inspect. Proof you can verify.*
