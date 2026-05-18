@@ -218,7 +218,7 @@ This is when I set out in early 2025 to find the "why" behind AI responses and w
 
 Now, don't get me wrong — the irony of using AI to help explain itself is not lost on me. But I believe that over a year of disciplined iteration to produce a valid and functional COR Proof reasoning artifact is exactly the discipline this problem demands. The repo speaks for itself — but I firmly believe in the value of community improvement and support. I am employed full-time with an active family life — and I commit every spare moment during the week and weekends to improve the outcomes of COR Proof.
 
-On that note, let's dive right into it and if you'd like to know a little more about me, I have posted my info in the CONTRIBUTING.md file of this repo.
+On that note, let's dive right into it and if you'd like to know a little more about me, I have posted my info in the MAINTAINERS.md file of this repo.
 
 Thanks,
 
