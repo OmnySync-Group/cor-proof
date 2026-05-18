@@ -23,7 +23,7 @@ We welcome contributions in the following areas:
 - Proprietary validation engines
 - Keeper / governance logic
 - Closed-source confidence scoring systems
-- Astral / Companion orchestration components
+- Arcaestra / Companion orchestration components
 
 These are intentionally excluded to preserve the open-core boundary.
 
