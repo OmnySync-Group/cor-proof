@@ -8,9 +8,57 @@
 
 ## What is COR Proof?
 
-COR Proof is an open, structured specification for capturing, validating, and auditing reasoning processes in AI and human–AI systems.
+**COR Proof is a JSON format and validator for inspectable AI reasoning.**
 
-It defines a machine-verifiable and human-readable format for representing claims, evidence, and reasoning structure, supporting schema-based validation and cross-system verification across multiple domains.
+When an AI system produces a claim, COR Proof gives it a place to show its work: a structured
+artifact that binds the claim to declared evidence, breaks the reasoning into traceable atomic
+steps, states explicit assumptions, and records a confidence band — all in a schema-validated
+JSON document that anyone can inspect, validate, and compare.
+
+The format is model-agnostic and open (Apache 2.0). The validator is a single Node.js script
+using AJV against a JSON Schema draft-2020-12 definition. There is no runtime dependency on
+any AI provider.
+
+**COR Proof Level 1 (this release)** is the Universal Structure Layer. It exposes reasoning
+structure. It does not judge truth, enforce policy, or perform inference.
+
+---
+
+## Quickstart
+
+Clone, validate, and inspect in under 2 minutes:
+
+```bash
+git clone https://github.com/OmnySync-Group/cor-proof && cd cor-proof
+npm install
+node validator/validate.js examples/valid/L1_basic_claim.json
+```
+
+Expected: `✅ VALID`. Now try an invalid file to see the error format:
+
+```bash
+node validator/validate.js examples/invalid/L1_wrong_type.json
+```
+
+Expected: `❌ INVALID` with a specific schema violation message.
+
+---
+
+## The Governance Challenge
+
+Can an AI system produce a well-structured, inspectable argument about its own governance
+constraints — using only publicly discussable information, without disclosing proprietary
+policy or confidential system details?
+
+COR Proof makes the reasoning structure of that argument auditable whether or not you trust
+the conclusion.
+
+See **[CHALLENGE.md](CHALLENGE.md)** for the full question, scope rules, and submission
+instructions.
+
+A worked reference artifact is at `examples/valid/governance_constraint_demo.json`.
+
+---
 
 ---
 
@@ -92,10 +140,11 @@ This is the normative definition of a COR Proof Level 1 document.
 
 ### Validate a known-good example
 
+From the repo root:
+
 ```bash
-cd validator
 npm install
-node validate.js ../examples/valid/L1_basic_claim.json
+node validator/validate.js examples/valid/L1_basic_claim.json
 ```
 
 Expected result: `✅ VALID`
@@ -103,7 +152,7 @@ Expected result: `✅ VALID`
 ### Test a known-invalid example
 
 ```bash
-node validate.js ../examples/invalid/L1_wrong_type.json
+node validator/validate.js examples/invalid/L1_wrong_type.json
 ```
 
 Expected result: `❌ INVALID` (schema violation with specific error)
@@ -133,6 +182,7 @@ See [demo/README.md](demo/README.md) for details.
 ```
 cor-proof/
 ├── README.md                          Project overview & usage
+├── CHALLENGE.md                       Governance challenge question & submission instructions
 ├── NOTICE.md                          Attribution & notices
 ├── LICENSE.md                         Apache License 2.0
 ├── CONTRIBUTING.md                    Contribution guidelines
@@ -147,7 +197,9 @@ cor-proof/
 ├── examples/
 │   ├── README.md                      Example documentation
 │   ├── valid/
-│   │   └── L1_basic_claim.json        Minimal valid L1 artifact
+│   │   ├── L1_basic_claim.json        Minimal valid L1 artifact
+│   │   ├── governance_constraint_demo.json  Governance challenge reference artifact
+│   │   └── ARTIFACT_README.md         Plain-English guide to the governance demo
 │   └── invalid/
 │       ├── L1_missing_required.json   Missing cor_version (required field)
 │       ├── L1_wrong_type.json         level as string (type violation)
